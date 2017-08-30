@@ -1,0 +1,5 @@
+{
+  "environment": "production",
+  "defaultLocale": "en-US",
+  "sentryDsn" : "<your sentry.io public DSN here>"
+}
