@@ -1,3 +1,5 @@
+import { GIVE_ANSWER } from "./constants";
+
 const initialState = {
   activeQuestion: 0,
   score: 0,
@@ -17,6 +19,20 @@ const initialState = {
   ]
 };
 
-export const quiz = (state = initialState) => {
+export const quiz = (state = initialState, action) => {
+  if (action.type === GIVE_ANSWER) {
+    const q = state.questions[state.activeQuestion];
+    let points = 0;
+
+    if (q.answer === action.answer) {
+      points = q.points;
+    }
+
+    return {
+      ...state,
+      score: state.score + points,
+      activeQuestion: state.activeQuestion + 1
+    };
+  }
   return state;
 };
