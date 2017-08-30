@@ -7,7 +7,8 @@ class Question extends Component {
     super();
     this.state = {
       visibleAnswers: 1,
-      active: false
+      active: false,
+      timeOut: false
     };
   }
 
@@ -25,19 +26,25 @@ class Question extends Component {
     clearInterval(this.interval);
   }
 
-  render({ question, children }, { visibleAnswers, active }) {
+  render({ question, children, time }, { visibleAnswers, active, timeOut }) {
+    const onTimeOut = () => {
+      this.setState({ timeOut: true });
+    };
+
     return (
       <main class={styles.main}>
         <div class={styles.question}>
           {question}
         </div>
-        <Timebar time={30} active={active} />
+        <Timebar {...{ time, active, onTimeOut }} />
         <form class={styles.answers}>
-          {children.map((child, index) => {
-            if (index >= visibleAnswers)
-              return <div class={styles.placeholder} />;
-            return child;
-          })}
+          {!timeOut &&
+            children.map((child, index) => {
+              if (index >= visibleAnswers)
+                return <div class={styles.placeholder} />;
+              return child;
+            })}
+          {timeOut && <div>Time{"'"}s up!</div>}
         </form>
       </main>
     );
