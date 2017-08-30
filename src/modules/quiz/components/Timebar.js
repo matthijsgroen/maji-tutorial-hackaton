@@ -14,13 +14,17 @@ class Timebar extends Component {
   }
 
   render({ time, active }) {
-    let style = `transition-duration:${time}s;width:100%`;
+    let classes = styles.timebar;
+    let style = `transition-duration: ${time}s;animation-duration: ${time}s`;
+
     if (!active) {
-      style = "transition-duration: 0s";
+      style = "transition-duration: 0s;animation-duration: 0s";
+    } else {
+      classes += " " + styles.running;
     }
 
     return (
-      <div class={styles.timebar}>
+      <div class={classes}>
         <div style={style} />
       </div>
     );

@@ -1,5 +1,5 @@
 .timebar {
-    background: yellow;
+    background: white;
     height: 1rem;
     position: relative;
 
@@ -12,5 +12,26 @@
         background: red;
         transition-timing-function: linear;
         transition-property: width;
+    }
+}
+
+.running > div {
+    animation-name: timeout-alert;
+    animation-fill-mode: forwards;
+    width: 100%;
+}
+
+@keyframes timeout-alert {
+    0%,
+    60% {
+        background-color: #0c0;
+    }
+
+    80% {
+        background-color: #ff0;
+    }
+
+    100% {
+        background-color: #f00;
     }
 }
