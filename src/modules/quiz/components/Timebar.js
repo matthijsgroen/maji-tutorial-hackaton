@@ -4,16 +4,19 @@ import styles from "./Timebar.scss";
 class Timebar extends Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.active != this.props.active && nextProps.active) {
-      setTimeout(() => {
+      this.timer = setTimeout(() => {
         nextProps.onTimeOut();
       }, nextProps.time * 1000);
+    }
+    if (nextProps.active != this.props.active && !nextProps.active) {
+      clearTimeout(this.timer);
     }
   }
 
   render({ time, active }) {
-    let style = `transition-duration:${time}s;`;
-    if (active) {
-      style += "width:100%";
+    let style = `transition-duration:${time}s;width:100%`;
+    if (!active) {
+      style = "transition-duration: 0s";
     }
 
     return (

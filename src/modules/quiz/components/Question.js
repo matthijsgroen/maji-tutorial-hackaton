@@ -2,17 +2,19 @@ import { h, Component } from "preact";
 import styles from "./Question.scss";
 import Timebar from "./Timebar";
 
+const initialState = {
+  visibleAnswers: 1,
+  active: false,
+  timeOut: false
+};
+
 class Question extends Component {
   constructor() {
     super();
-    this.state = {
-      visibleAnswers: 1,
-      active: false,
-      timeOut: false
-    };
+    this.state = { ...initialState };
   }
 
-  componentDidMount() {
+  resetQuestion() {
     this.interval = setInterval(() => {
       this.setState({ visibleAnswers: this.state.visibleAnswers + 1 });
       if (this.state.visibleAnswers > this.props.children.length) {
@@ -22,8 +24,19 @@ class Question extends Component {
     }, 200);
   }
 
+  componentDidMount() {
+    this.resetQuestion();
+  }
+
   componentWillUnmount() {
     clearInterval(this.interval);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.question !== this.props.question) {
+      this.setState(initialState);
+      this.resetQuestion();
+    }
   }
 
   render({ question, children, time }, { visibleAnswers, active, timeOut }) {

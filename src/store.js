@@ -11,6 +11,4 @@ const store = createStore(
   window.devToolsExtension ? window.devToolsExtension() : f => f
 );
 
-window.store = store;
-
 export default store;
