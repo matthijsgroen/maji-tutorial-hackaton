@@ -1,16 +1,12 @@
 import { h } from "preact";
-import { Router as PreactRouter } from "preact-router";
+import Question from "src/modules/quiz/components/question";
 
-import { history } from "src/support/history";
-import { augmentRouter } from "src/support/pageTransitionSupport";
-import WelcomePage from "src/modules/welcome/containers/WelcomePage";
-import DetailPage from "src/modules/welcome/containers/DetailPage";
-
-const Router = augmentRouter(PreactRouter);
-
-export default () => (
-  <Router history={history}>
-    <DetailPage path="/detail" />
-    <WelcomePage default />
-  </Router>
+const App = () => (
+  <Question question="Welke is de eerste button?">
+    <button type="button">Eerste button</button>
+    <button type="button">Tweede button</button>
+    <button type="button">Derde button</button>
+  </Question>
 );
+
+export default App;

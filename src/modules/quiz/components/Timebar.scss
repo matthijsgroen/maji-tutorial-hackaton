@@ -1,0 +1,16 @@
+.timebar {
+    background: yellow;
+    height: 1rem;
+    position: relative;
+
+    > div {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        background: red;
+        transition-timing-function: linear;
+        transition-property: width;
+    }
+}
