@@ -1,8 +1,8 @@
 import { createStore, combineReducers } from "redux";
-import { welcome } from "src/modules/welcome/reducer";
+import { quiz } from "src/modules/quiz/reducer";
 
 const rootReducer = combineReducers({
-  welcome
+  quiz
   // additional reducers would be added here
 });
 

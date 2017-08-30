@@ -1,21 +1,6 @@
 import { h } from "preact";
-import TextQuestion from "src/modules/quiz/components/TextQuestion";
+import Quiz from "src/modules/quiz/containers/Quiz";
 
-const App = () => {
-  const answers = ["Eerste button", "Tweede button", "Derde button"];
-
-  const onAnswer = answer => {
-    // console.log(answer);
-  };
-
-  return (
-    <TextQuestion
-      question="Welke?"
-      time={5}
-      answers={answers}
-      onAnswer={onAnswer}
-    />
-  );
-};
+const App = () => <Quiz />;
 
 export default App;
