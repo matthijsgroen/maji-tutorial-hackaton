@@ -3,7 +3,6 @@ import "./styles/shell.scss";
 import { h, render } from "preact";
 import { Provider } from "preact-redux";
 import FastClick from "fastclick";
-import "src/config/sentry";
 import store from "./store";
 
 const renderApp = function() {
