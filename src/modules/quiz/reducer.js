@@ -5,15 +5,59 @@ const initialState = {
   score: 0,
   questions: [
     {
-      question: "Welke?",
-      answer: "Deze button",
-      alternatives: ["Deze niet", "Ook niet", "Nope, niet deze"],
+      question: "What is the stack of Maji 3.x?",
+      answer: "Preact + Redux",
+      alternatives: [
+        "React + Redux",
+        "Backbone + Marionette",
+        "Java + Springboot",
+        "jQuery"
+      ],
       points: 10
     },
     {
-      question: "En nou?",
-      answer: "Deze knop",
-      alternatives: ["Maar deze niet", "En deze ook niet", "Nee, niet deze"],
+      question: "What language is used in Maji 3.x?",
+      answer: "Latest Ecmascript + Babel",
+      alternatives: ["Javascript 5", "Coffeescript", "jQuery"],
+      points: 15
+    },
+    {
+      question: "What do we use for asset packaging?",
+      answer: "Webpack",
+      alternatives: ["Grunt", "Rollup", "Broccoli"],
+      points: 15
+    },
+    {
+      question: "How do we mutate state?",
+      answer: "We don't mutate the state",
+      alternatives: ["We reassign the changing parts", "We change it"],
+      points: 15
+    },
+    {
+      question: "What IDE is best for Maji?",
+      answer: "Maji does not care",
+      alternatives: ["VIM", "Visual Studio", "XCode", "Eclipse"],
+      points: 15
+    },
+    {
+      question: "TDD?",
+      answer: "Yes",
+      alternatives: ["No"],
+      points: 15
+    },
+    {
+      question: "What is the most sensible approach?",
+      answer: "Some smart Containers, mostly dumb Components",
+      alternatives: [
+        "All smart Containers",
+        "One smart Container, rest dumb Components"
+      ],
+      points: 15
+    },
+    {
+      question: "This quiz is...",
+      answer: "Best quiz ever!",
+      alternatives: ["OK", "Lame!"],
       points: 15
     }
   ]
