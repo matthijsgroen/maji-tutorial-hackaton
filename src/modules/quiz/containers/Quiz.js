@@ -1,7 +1,7 @@
 import { h } from "preact";
 import { connect } from "preact-redux";
 import TextQuestion from "../components/TextQuestion";
-import { shuffle , split } from "lodash";
+import { shuffle } from "lodash";
 import { giveAnswer } from "../actions";
 
 const Quiz = ({ answers, question, giveAnswer, gameOver, score, time }) => {
