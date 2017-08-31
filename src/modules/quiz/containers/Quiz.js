@@ -4,9 +4,9 @@ import TextQuestion from "../components/TextQuestion";
 import { shuffle } from "lodash";
 import { giveAnswer } from "../actions";
 
-const Quiz = ({ answers, question, giveAnswer, gameOver, score }) => {
+const Quiz = ({ answers, question, giveAnswer, gameOver, score, maxScore }) => {
   return gameOver
-    ? <div>You scored {score}</div>
+    ? <div>You scored {score} of {maxScore}</div>
     : <TextQuestion
         question={question}
         time={5}
@@ -26,12 +26,16 @@ const mapStateToProps = state => {
 
   const question = state.quiz.questions[currentQuestion];
   const answers = shuffle([...question.alternatives, question.answer]);
+  const maxScore = state.quiz.questions
+    .map(q => q.points)
+    .reduce((result, points) => result + points, 0);
 
   return {
     answers,
     question: question.question,
     gameOver,
-    score: state.quiz.score
+    score: state.quiz.score,
+    maxScore
   };
 };
 

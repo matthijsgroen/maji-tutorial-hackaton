@@ -4,8 +4,7 @@ import Timebar from "./Timebar";
 
 const initialState = {
   visibleAnswers: 1,
-  active: false,
-  timeOut: false
+  active: false
 };
 
 class Question extends Component {
@@ -39,11 +38,7 @@ class Question extends Component {
     }
   }
 
-  render({ question, children, time }, { visibleAnswers, active, timeOut }) {
-    const onTimeOut = () => {
-      this.setState({ timeOut: true });
-    };
-
+  render({ question, children, time, onTimeOut }, { visibleAnswers, active }) {
     return (
       <main class={styles.main}>
         <div class={styles.question}>
@@ -51,13 +46,11 @@ class Question extends Component {
         </div>
         <Timebar {...{ time, active, onTimeOut }} />
         <form class={styles.answers}>
-          {!timeOut &&
-            children.map((child, index) => {
-              if (index >= visibleAnswers)
-                return <div class={styles.placeholder} />;
-              return child;
-            })}
-          {timeOut && <div>Time{"'"}s up!</div>}
+          {children.map((child, index) => {
+            if (index >= visibleAnswers)
+              return <div class={styles.placeholder} />;
+            return child;
+          })}
         </form>
       </main>
     );
